@@ -4,6 +4,16 @@ A minimal, flat terminal Pomodoro timer written in PowerShell. It runs without t
 
 ![PowerShell 5.1+](https://img.shields.io/badge/PowerShell-5.1%2B-00bcd4?style=flat-square)
 
+## Preview
+
+### Focus mode
+
+![PomodoroShell running a focus interval](docs/screenshots/focus-mode.png)
+
+### Short break
+
+![PomodoroShell running a short break interval](docs/screenshots/break-mode.png)
+
 ## Run
 
 Open an interactive PowerShell terminal in this directory:
