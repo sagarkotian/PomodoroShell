@@ -38,6 +38,54 @@ Label the work you are about to do:
 
 The label appears in the TUI, terminal title, completion notification, and session history.
 
+## Run from any directory
+
+Create a persistent environment variable that points to the cloned repository. Replace the path if you cloned PomodoroShell somewhere else:
+
+```powershell
+$pomodoroPath = 'C:\Users\sagar\OneDrive\Documents\ChatGPT\PomodoroShell'
+
+[Environment]::SetEnvironmentVariable(
+    'POMODORO_HOME',
+    $pomodoroPath,
+    'User'
+)
+
+$env:POMODORO_HOME = $pomodoroPath
+```
+
+Create your PowerShell profile if it does not already exist, then open it:
+
+```powershell
+if (-not (Test-Path $PROFILE)) {
+    New-Item -ItemType File -Path $PROFILE -Force
+}
+
+notepad $PROFILE
+```
+
+Add this function to the profile and save it:
+
+```powershell
+function pomo {
+    & "$env:POMODORO_HOME\PomodoroShell.ps1" @args
+}
+```
+
+Reload the profile in the current terminal:
+
+```powershell
+. $PROFILE
+```
+
+You can now launch PomodoroShell from any directory. Arguments are forwarded to the timer:
+
+```powershell
+pomo
+pomo -Task "Study PowerShell"
+pomo -Task "Deep work" -FocusMinutes 50 -AutoStart
+```
+
 ## Controls
 
 | Key | Action |
